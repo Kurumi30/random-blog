@@ -9,9 +9,9 @@
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
-<body>
+<body style="background-color: #252636;">
   <main class="container">
-    <h1 class="mb-1">
+    <h1 class="mb-1" style="color: #ADBAC7;">
       <%= article.title %>
     </h1>
 
@@ -22,7 +22,7 @@
     <a href="/" class="btn btn-secondary">Todos os artigos</a>
     <a href="/articles/edit/<%= article.id %>" class="btn btn-info">Editar</a>
 
-    <div>
+    <div class="card mt-4 card-body">
       <%- article.sanitizedHtml %>
     </div>
   </main>

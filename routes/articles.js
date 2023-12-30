@@ -1,42 +1,20 @@
 const { Router } = require('express')
-const Article = require('../models/article')
+const ArticleController = require('../controllers/articles')
 const { saveArticleAndRedirect } = require('../middlewares')
+
 const router = Router()
+const controller = new ArticleController()
 
-router.get("/new", (req, res) => {
-  res.render("articles/new", { article: new Article() })
-})
+router.get("/new", controller.newArticle)
 
-router.get("/edit/:id", async (req, res) => {
-  const article = await Article.findById(req.params.id)
+router.get("/edit/:id", controller.editArticle)
 
-  res.render("articles/edit", { article })
-})
+router.get("/:slug", controller.showArticle)
 
-router.get("/:slug", async (req, res) => {
-  const article = await Article.findOne({ slug: req.params.slug })
+router.post("/", controller.postArticle, saveArticleAndRedirect("new"))
 
-  if (article == null) res.redirect("/")
+router.put("/:id", controller.putArticle, saveArticleAndRedirect("edit"))
 
-  res.render("articles/show", { article })
-})
-
-router.post("/", async (req, res, next) => {
-  req.article = new Article()
-
-  next()
-}, saveArticleAndRedirect("new"))
-
-router.put("/:id", async (req, res, next) => {
-  req.article = await Article.findById(req.params.id)
-
-  next()
-}, saveArticleAndRedirect("edit"))
-
-router.delete("/:id", async (req, res) => {
-  await Article.findByIdAndDelete(req.params.id)
-
-  res.redirect("/")
-})
+router.delete("/:id", controller.deleteArticle)
 
 module.exports = router

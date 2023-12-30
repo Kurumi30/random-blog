@@ -3,21 +3,20 @@ const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 const Article = require('./models/article')
 const articleRouter = require('./routes/articles')
+const ArticleController = require('./controllers/articles')
 
 const app = express()
 const port = process.env.PORT || 3000
+const controller = new ArticleController()
 
 mongoose.connect(process.env.MONGODB_URL)
 
 app.set("view engine", "ejs")
+
 app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride("_method"))
 
-app.get("/", async (req, res) => {
-  const articles = await Article.find().sort({ createdAt: "desc" })
-  
-  res.render("articles/index", { articles })
-})
+app.get("/", controller.main)
 
 app.use("/articles", articleRouter)
 

@@ -7,12 +7,15 @@
   <title>MARKDOWN - BLOG</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@600&display=swap" rel="stylesheet">
 </head>
 
 <body style="background-color: #252636;">
   <main class="container">
-    <h1 class="mb-4 text-center" style="color: #ADBAC7;">BLOG ANÔNIMO</h1>
-    <a href="/articles/new" class="btn btn-success">Criar artigo</a>
+    <h1 class="mb-4 text-center" style="color: #3C8EF5; font-family: 'Fira Code', monospace;">BLOG ANÔNIMO</h1>
+    <a href="/articles/new" class="btn btn-outline-success">Criar artigo</a>
 
     <% articles.forEach(article=> { %>
       <div class="card mt-4">
@@ -21,16 +24,16 @@
             <%= article.title %>
           </h4>
           <div class="card-subtitle text-muted mb-2">
-            <%= article.createdAt.toLocaleDateString() %>
+            <%= article.createdAt.toLocaleString().replace(/,/g, '' ) %>
           </div>
           <div class="card-text mb-2">
             <%= article.description %>
           </div>
-          <a href="articles/<%= article.slug %>" class="btn btn-primary">Ler mais</a>
-          <a href="articles/edit/<%= article.id %>" class="btn btn-info">Editar</a>
+          <a href="articles/<%= article.slug %>" class="btn btn-outline-primary">Ler mais</a>
+          <a href="articles/edit/<%= article.id %>" class="btn btn-outline-info">Editar</a>
 
           <form action="/articles/<%= article.id %>?_method=DELETE" method="post" class="d-inline">
-            <button type="submit" class="btn btn-danger">Deletar</button>
+            <button type="submit" class="btn btn-outline-danger">Deletar</button>
           </form>
         </div>
       </div>

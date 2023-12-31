@@ -24,7 +24,7 @@
             <%= article.title %>
           </h4>
           <div class="card-subtitle text-muted mb-2">
-            <%= article.createdAt.toLocaleString().replace(/,/g, '' ) %>
+            <%= article.createdAt.toLocaleString({ language: 'pt-BR' }, { timeZone: 'America/Sao_Paulo' }).replace(/,/g, '' ) %>
           </div>
           <div class="card-text mb-2">
             <%= article.description %>

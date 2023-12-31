@@ -16,7 +16,8 @@
     </h1>
 
     <div class="text-muted mb-2">
-      <%= article.createdAt.toLocaleString({ language: 'pt-BR' }, { timeZone: 'America/Sao_Paulo' }).replace(/,/g, '') %>
+      <%= article.createdAt.toLocaleString({ region: 'pt-BR' }, { timeZone: 'America/Sao_Paulo' }).replace(/,/g, '' )
+        %>
     </div>
 
     <a href="/" class="btn btn-outline-warning">Todos os artigos</a>

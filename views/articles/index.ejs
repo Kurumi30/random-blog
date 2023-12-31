@@ -39,32 +39,6 @@
       </div>
       <% }) %>
   </main>
-
-  <script type="module">
-    onload = function createToken() {
-      let userToken = localStorage.getItem('userToken')
-
-      if (!userToken) {
-        userToken = Math.random().toString(36).substr(2)
-        localStorage.setItem('userToken', userToken)
-      }
-
-      console.info({ userToken })
-
-      // const token = Math.random().toString(36).substr(2)
-      // localStorage.setItem('userToken', token)
-
-      // const validateToken = userToken === token
-
-      // if (!validateToken) {
-      //   alert('Você não tem permissão para editar este artigo!')
-
-      //   setTimeout(() => {
-      //     location.href = '/'
-      //   }, 5000)
-      // }
-    }
-  </script>
 </body>
 
 </html>

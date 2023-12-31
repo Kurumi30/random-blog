@@ -7,9 +7,8 @@
   <title>MARKDOWN - BLOG</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@600&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://freepngimg.com/download/anime/10-2-anime-png-images.png" type="image/png">
 </head>
 
 <body style="background-color: #252636;">
@@ -40,6 +39,32 @@
       </div>
       <% }) %>
   </main>
+
+  <script type="module">
+    onload = function createToken() {
+      let userToken = localStorage.getItem('userToken')
+
+      if (!userToken) {
+        userToken = Math.random().toString(36).substr(2)
+        localStorage.setItem('userToken', userToken)
+      }
+
+      console.info({ userToken })
+
+      // const token = Math.random().toString(36).substr(2)
+      // localStorage.setItem('userToken', token)
+
+      // const validateToken = userToken === token
+
+      // if (!validateToken) {
+      //   alert('Você não tem permissão para editar este artigo!')
+
+      //   setTimeout(() => {
+      //     location.href = '/'
+      //   }, 5000)
+      // }
+    }
+  </script>
 </body>
 
 </html>

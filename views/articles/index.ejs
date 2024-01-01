@@ -18,15 +18,15 @@
     </h1>
     <a href="/articles/new" class="btn btn-outline-success">Criar artigo</a>
 
-    <% articles.forEach(article=> { %>
+    <% articles.forEach(article => { %>
       <div class="card mt-4">
         <div class="card-body">
           <h4 class="card-title">
             <%= article.title %>
           </h4>
           <div class="card-subtitle text-muted mb-2">
-            <%= article.createdAt.toLocaleString({ region: 'pt-BR' }, { timeZone: 'America/Sao_Paulo'
-              }).replace(/,/g, '' ) %>
+            <%= article.createdAt.toLocaleDateString("pt-br") %>
+            <%= article.createdAt.toLocaleTimeString("pt-br") %>
           </div>
           <div class="card-text mb-2">
             <%= article.description %>

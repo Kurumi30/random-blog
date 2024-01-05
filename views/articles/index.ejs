@@ -9,24 +9,24 @@
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@600&display=swap" rel="stylesheet">
   <link rel="icon" href="https://freepngimg.com/download/anime/10-2-anime-png-images.png" type="image/png">
+  <%- include("style") %>
 </head>
 
-<body style="background-color: #252636;">
+<body>
   <main class="container">
     <h1 class="mb-4 text-center" style="color: #3C8EF5; font-family: 'Fira Code', monospace; margin-top: 25px;">
       RANDOM BLOG
     </h1>
     <a href="/articles/new" class="btn btn-outline-success">Criar artigo</a>
 
-    <% articles.forEach(article => { %>
+    <% articles.forEach(article=> { %>
       <div class="card mt-4">
         <div class="card-body">
           <h4 class="card-title">
             <%= article.title %>
           </h4>
           <div class="card-subtitle text-muted mb-2">
-            <%= article.createdAt.toLocaleDateString("br-pt") %>
-            <%= article.createdAt.toLocaleTimeString("br-pt") %>
+            <%= article.createdAt.toLocaleString().replace(", ", " ") %>
           </div>
           <div class="card-text mb-2">
             <%= article.description %>

@@ -5,6 +5,11 @@ const createDomPurify = require('dompurify')
 const { JSDOM } = require('jsdom')
 
 const dompurify = createDomPurify(new JSDOM().window)
+const { format } = new Intl.DateTimeFormat("pt-br", {
+  dateStyle: "short",
+  timeStyle: "short",
+  timeZone: "America/Sao_Paulo",
+})
 
 const articleSchema = new mongoose.Schema({
   title: {
@@ -20,7 +25,7 @@ const articleSchema = new mongoose.Schema({
   },
   createdAt: {
     type: Date,
-    default: Date.now(),
+    default: format(Date.now()),
   },
   slug: {
     type: String,
